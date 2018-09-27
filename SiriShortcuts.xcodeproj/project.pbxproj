@@ -17,6 +17,7 @@
 		9B926159215CDFCA00559105 /* OrderDetailTableConfigurationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B926158215CDFCA00559105 /* OrderDetailTableConfigurationController.swift */; };
 		9B92615B215CDFE500559105 /* ConfigureMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B92615A215CDFE500559105 /* ConfigureMenuTableViewController.swift */; };
 		9B92615D215CE04100559105 /* SoupMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B92615C215CE04100559105 /* SoupMenuViewController.swift */; };
+		9B926161215CE3C100559105 /* MenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B926160215CE3C100559105 /* MenuItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		9B926158215CDFCA00559105 /* OrderDetailTableConfigurationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailTableConfigurationController.swift; sourceTree = "<group>"; };
 		9B92615A215CDFE500559105 /* ConfigureMenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigureMenuTableViewController.swift; sourceTree = "<group>"; };
 		9B92615C215CE04100559105 /* SoupMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoupMenuViewController.swift; sourceTree = "<group>"; };
+		9B926160215CE3C100559105 /* MenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,6 +50,7 @@
 		9B926132215C6D3C00559105 = {
 			isa = PBXGroup;
 			children = (
+				9B92615E215CE38700559105 /* Shared */,
 				9B92613D215C6D3C00559105 /* SiriShortcuts */,
 				9B92613C215C6D3C00559105 /* Products */,
 			);
@@ -93,6 +96,22 @@
 				9B92615C215CE04100559105 /* SoupMenuViewController.swift */,
 			);
 			path = UI;
+			sourceTree = "<group>";
+		};
+		9B92615E215CE38700559105 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				9B92615F215CE39B00559105 /* Data */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		9B92615F215CE39B00559105 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				9B926160215CE3C100559105 /* MenuItem.swift */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -167,6 +186,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B926161215CE3C100559105 /* MenuItem.swift in Sources */,
 				9B926157215CDFA000559105 /* OrderDetailViewController.swift in Sources */,
 				9B92615B215CDFE500559105 /* ConfigureMenuTableViewController.swift in Sources */,
 				9B92615D215CE04100559105 /* SoupMenuViewController.swift in Sources */,
