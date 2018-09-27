@@ -8,20 +8,30 @@
 
 /* Begin PBXBuildFile section */
 		9B92613F215C6D3C00559105 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B92613E215C6D3C00559105 /* AppDelegate.swift */; };
-		9B926141215C6D3C00559105 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B926140215C6D3C00559105 /* ViewController.swift */; };
+		9B926141215C6D3C00559105 /* OrderHistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B926140215C6D3C00559105 /* OrderHistoryTableViewController.swift */; };
 		9B926144215C6D3C00559105 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B926142215C6D3C00559105 /* Main.storyboard */; };
 		9B926146215C6D3E00559105 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B926145215C6D3E00559105 /* Assets.xcassets */; };
 		9B926149215C6D3E00559105 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B926147215C6D3E00559105 /* LaunchScreen.storyboard */; };
+		9B926155215C7C2B00559105 /* OrderDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B926154215C7C2B00559105 /* OrderDetail.storyboard */; };
+		9B926157215CDFA000559105 /* OrderDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B926156215CDF9F00559105 /* OrderDetailViewController.swift */; };
+		9B926159215CDFCA00559105 /* OrderDetailTableConfigurationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B926158215CDFCA00559105 /* OrderDetailTableConfigurationController.swift */; };
+		9B92615B215CDFE500559105 /* ConfigureMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B92615A215CDFE500559105 /* ConfigureMenuTableViewController.swift */; };
+		9B92615D215CE04100559105 /* SoupMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B92615C215CE04100559105 /* SoupMenuViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		9B92613B215C6D3C00559105 /* SiriShortcuts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SiriShortcuts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B92613E215C6D3C00559105 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		9B926140215C6D3C00559105 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		9B926140215C6D3C00559105 /* OrderHistoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderHistoryTableViewController.swift; sourceTree = "<group>"; };
 		9B926143215C6D3C00559105 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9B926145215C6D3E00559105 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9B926148215C6D3E00559105 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9B92614A215C6D3E00559105 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9B926154215C7C2B00559105 /* OrderDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OrderDetail.storyboard; sourceTree = "<group>"; };
+		9B926156215CDF9F00559105 /* OrderDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailViewController.swift; sourceTree = "<group>"; };
+		9B926158215CDFCA00559105 /* OrderDetailTableConfigurationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailTableConfigurationController.swift; sourceTree = "<group>"; };
+		9B92615A215CDFE500559105 /* ConfigureMenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigureMenuTableViewController.swift; sourceTree = "<group>"; };
+		9B92615C215CE04100559105 /* SoupMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoupMenuViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +64,35 @@
 		9B92613D215C6D3C00559105 /* SiriShortcuts */ = {
 			isa = PBXGroup;
 			children = (
-				9B92613E215C6D3C00559105 /* AppDelegate.swift */,
-				9B926140215C6D3C00559105 /* ViewController.swift */,
+				9B926151215C6E3400559105 /* UI */,
+				9B926150215C6E2300559105 /* Resources */,
+			);
+			path = SiriShortcuts;
+			sourceTree = "<group>";
+		};
+		9B926150215C6E2300559105 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
 				9B926142215C6D3C00559105 /* Main.storyboard */,
+				9B926154215C7C2B00559105 /* OrderDetail.storyboard */,
 				9B926145215C6D3E00559105 /* Assets.xcassets */,
 				9B926147215C6D3E00559105 /* LaunchScreen.storyboard */,
 				9B92614A215C6D3E00559105 /* Info.plist */,
 			);
-			path = SiriShortcuts;
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		9B926151215C6E3400559105 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				9B92613E215C6D3C00559105 /* AppDelegate.swift */,
+				9B926140215C6D3C00559105 /* OrderHistoryTableViewController.swift */,
+				9B926156215CDF9F00559105 /* OrderDetailViewController.swift */,
+				9B926158215CDFCA00559105 /* OrderDetailTableConfigurationController.swift */,
+				9B92615A215CDFE500559105 /* ConfigureMenuTableViewController.swift */,
+				9B92615C215CE04100559105 /* SoupMenuViewController.swift */,
+			);
+			path = UI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -122,6 +153,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B926155215C7C2B00559105 /* OrderDetail.storyboard in Resources */,
 				9B926149215C6D3E00559105 /* LaunchScreen.storyboard in Resources */,
 				9B926146215C6D3E00559105 /* Assets.xcassets in Resources */,
 				9B926144215C6D3C00559105 /* Main.storyboard in Resources */,
@@ -135,8 +167,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9B926141215C6D3C00559105 /* ViewController.swift in Sources */,
+				9B926157215CDFA000559105 /* OrderDetailViewController.swift in Sources */,
+				9B92615B215CDFE500559105 /* ConfigureMenuTableViewController.swift in Sources */,
+				9B92615D215CE04100559105 /* SoupMenuViewController.swift in Sources */,
+				9B926141215C6D3C00559105 /* OrderHistoryTableViewController.swift in Sources */,
 				9B92613F215C6D3C00559105 /* AppDelegate.swift in Sources */,
+				9B926159215CDFCA00559105 /* OrderDetailTableConfigurationController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,7 +320,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 47W28PSMV7;
-				INFOPLIST_FILE = SiriShortcuts/Info.plist;
+				INFOPLIST_FILE = SiriShortcuts/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -302,7 +338,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 47W28PSMV7;
-				INFOPLIST_FILE = SiriShortcuts/Info.plist;
+				INFOPLIST_FILE = SiriShortcuts/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
