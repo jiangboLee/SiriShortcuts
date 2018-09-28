@@ -27,3 +27,15 @@ public struct MenuItem: Codable, Hashable {
         self.isDailySpecial = isDailySpecial
     }
 }
+
+extension MenuItem: LocalizableCurrency {
+    var localizedCurrencyValue: String {
+        return NumberFormatter.currencyFormatter.string(from: price as NSDecimalNumber) ?? ""
+    }
+}
+
+extension MenuItem: LocalizableShortcutString {
+    var shortcutLocalizationKey: String {
+        return shortcutNameKey
+    }
+}

@@ -7,7 +7,7 @@
 	<key>INIntentDefinitionModelVersion</key>
 	<string>1.0</string>
 	<key>INIntentDefinitionSystemVersion</key>
-	<string>18A391</string>
+	<string>17G65</string>
 	<key>INIntentDefinitionToolsBuildVersion</key>
 	<string>10A255</string>
 	<key>INIntentDefinitionToolsVersion</key>
@@ -70,7 +70,7 @@
 					<key>INIntentParameterCombinationSupportsBackgroundExecution</key>
 					<true/>
 					<key>INIntentParameterCombinationTitle</key>
-					<string>Order ${quantity}${soup}</string>
+					<string>Order ${quantity}  ${soup}</string>
 					<key>INIntentParameterCombinationTitleID</key>
 					<string>VBrPjm</string>
 				</dict>
@@ -85,7 +85,7 @@
 					<key>INIntentParameterCombinationSupportsBackgroundExecution</key>
 					<true/>
 					<key>INIntentParameterCombinationTitle</key>
-					<string>Order ${quantity}${soup}</string>
+					<string>Order ${quantity} ${soup}</string>
 					<key>INIntentParameterCombinationTitleID</key>
 					<string>gxTgE0</string>
 				</dict>

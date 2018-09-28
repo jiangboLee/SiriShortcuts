@@ -49,8 +49,15 @@ class OrderDetailViewController: UITableViewController {
         
         if tableConfiguration.orderType == .historical {
             let addShortcutButton = INUIAddVoiceShortcutButton(style: .whiteOutline)
-//            addShortcutButton.shortcut = INShortcut(intent: order.intent)
+            addShortcutButton.shortcut = INShortcut(intent: order.intent)
+            addShortcutButton.delegate = self
             
+            addShortcutButton.translatesAutoresizingMaskIntoConstraints = false
+            tableViewFooter.addSubview(addShortcutButton)
+            tableViewFooter.centerXAnchor.constraint(equalTo: addShortcutButton.centerXAnchor).isActive = true
+            tableViewFooter.centerYAnchor.constraint(equalTo: addShortcutButton.centerYAnchor).isActive = true
+            
+            tableView.tableFooterView = tableViewFooter
         }
     }
     
@@ -148,6 +155,54 @@ extension OrderDetailViewController {
     }
 }
 
+// MARK: - INUIAddVoiceShortcutButtonDelegate 这些代理都很简单明白
+extension OrderDetailViewController: INUIAddVoiceShortcutButtonDelegate {
+    func present(_ addVoiceShortcutViewController: INUIAddVoiceShortcutViewController, for addVoiceShortcutButton: INUIAddVoiceShortcutButton) {
+        addVoiceShortcutViewController.delegate = self
+        present(addVoiceShortcutViewController, animated: true, completion: nil)
+    }
+    
+    func present(_ editVoiceShortcutViewController: INUIEditVoiceShortcutViewController, for addVoiceShortcutButton: INUIAddVoiceShortcutButton) {
+        editVoiceShortcutViewController.delegate = self
+        present(editVoiceShortcutViewController, animated: true, completion: nil)
+    }
+}
+
+// MARK: - 增加sirid控制器代理
+extension OrderDetailViewController: INUIAddVoiceShortcutViewControllerDelegate {
+    func addVoiceShortcutViewController(_ controller: INUIAddVoiceShortcutViewController, didFinishWith voiceShortcut: INVoiceShortcut?, error: Error?) {
+        if let error = error as NSError? {
+            os_log("Error adding voice shortcut: %@", log: OSLog.default, type: .error, error)
+        }
+        
+        controller.dismiss(animated: true, completion: nil)
+    }
+    
+    func addVoiceShortcutViewControllerDidCancel(_ controller: INUIAddVoiceShortcutViewController) {
+        controller.dismiss(animated: true, completion: nil)
+    }
+}
+
+// MARK: - INUIEditVoiceShortcutViewControllerDelegate  编辑siri代理
+extension OrderDetailViewController: INUIEditVoiceShortcutViewControllerDelegate {
+    func editVoiceShortcutViewController(_ controller: INUIEditVoiceShortcutViewController, didUpdate voiceShortcut: INVoiceShortcut?, error: Error?) {
+        if let error = error as NSError? {
+            os_log("Error adding voice shortcut: %@", log: OSLog.default, type: .error, error)
+        }
+        
+        controller.dismiss(animated: true, completion: nil)
+    }
+    
+    func editVoiceShortcutViewController(_ controller: INUIEditVoiceShortcutViewController, didDeleteVoiceShortcutWithIdentifier deletedVoiceShortcutIdentifier: UUID) {
+        controller.dismiss(animated: true, completion: nil)
+    }
+    
+    func editVoiceShortcutViewControllerDidCancel(_ controller: INUIEditVoiceShortcutViewController) {
+        controller.dismiss(animated: true, completion: nil)
+    }
+    
+    
+}
 
 class QuantityTableViewCell: UITableViewCell {
     
