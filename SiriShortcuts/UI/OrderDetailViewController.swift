@@ -8,6 +8,7 @@
 
 import UIKit
 import os
+import IntentsUI
 
 class OrderDetailViewController: UITableViewController {
 
@@ -43,8 +44,14 @@ class OrderDetailViewController: UITableViewController {
         tableView.tableHeaderView = tableViewHeader
     }
     
+    /// 添加siri按钮
     private func configureTableViewFooter() {
         
+        if tableConfiguration.orderType == .historical {
+            let addShortcutButton = INUIAddVoiceShortcutButton(style: .whiteOutline)
+//            addShortcutButton.shortcut = INShortcut(intent: order.intent)
+            
+        }
     }
     
     func configure(tableConfiguration: OrderDetailConfiguration, order: Order) {

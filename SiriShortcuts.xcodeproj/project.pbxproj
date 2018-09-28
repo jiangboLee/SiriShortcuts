@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9B76D074215E38D700A29AC5 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 9B76D073215E38D700A29AC5 /* Intents.intentdefinition */; };
 		9B92613F215C6D3C00559105 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B92613E215C6D3C00559105 /* AppDelegate.swift */; };
 		9B926141215C6D3C00559105 /* OrderHistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B926140215C6D3C00559105 /* OrderHistoryTableViewController.swift */; };
 		9B926144215C6D3C00559105 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B926142215C6D3C00559105 /* Main.storyboard */; };
@@ -30,6 +31,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9B76D073215E38D700A29AC5 /* Intents.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = Intents.intentdefinition; sourceTree = "<group>"; };
 		9B92613B215C6D3C00559105 /* SiriShortcuts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SiriShortcuts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B92613E215C6D3C00559105 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9B926140215C6D3C00559105 /* OrderHistoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderHistoryTableViewController.swift; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 			children = (
 				9BECDFCA215D0D92001CEC5D /* Support */,
 				9B92615F215CE39B00559105 /* Data */,
+				9B76D073215E38D700A29AC5 /* Intents.intentdefinition */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -235,6 +238,7 @@
 				9BECDFD3215D202B001CEC5D /* SoupOrderDataManager.swift in Sources */,
 				9B92615B215CDFE500559105 /* ConfigureMenuTableViewController.swift in Sources */,
 				9BECDFCC215D0DBB001CEC5D /* UserDefaults+DataSource.swift in Sources */,
+				9B76D074215E38D700A29AC5 /* Intents.intentdefinition in Sources */,
 				9BECDFCF215D1A82001CEC5D /* Order.swift in Sources */,
 				9B92615D215CE04100559105 /* SoupMenuViewController.swift in Sources */,
 				9B926167215DD01300559105 /* OrderDetailConfiguration.swift in Sources */,
