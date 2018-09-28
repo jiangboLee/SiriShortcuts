@@ -18,6 +18,14 @@ class SoupMenuViewController: UITableViewController {
     
     private var menuItems: [MenuItem] = SoupMenuManager().availableItems
     
+    override var userActivity: NSUserActivity? {
+        didSet {
+            if userActivity?.activityType == NSStringFromClass(OrderSoupIntent.self) {
+                performSegue(withIdentifier: SegueIdentifiers.newOrder.rawValue, sender: userActivity)
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -32,8 +40,10 @@ class SoupMenuViewController: UITableViewController {
             if sender as? UITableViewCell? != nil,
                 let indexPath = tableView.indexPathForSelectedRow {
                     order = Order(quantity: 1, menuItem: menuItems[indexPath.row], menuItemOptions: [])
-            } else {
-                //FIXME: --
+            } else if let activity = sender as? NSUserActivity,
+                let orderIntent = activity.interaction?.intent as? OrderSoupIntent {
+//                order = Order
+                //FIXME:---
             }
             
             if let order = order {

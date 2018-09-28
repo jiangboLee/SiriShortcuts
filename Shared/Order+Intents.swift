@@ -12,6 +12,8 @@ import Intents
 extension Order {
     public var intent: OrderSoupIntent {
         let orderSoupIntent = OrderSoupIntent()
+        
+        //给intents的属性一一赋值
         orderSoupIntent.quantity = quantity as NSNumber
         
         let displayString = NSString.deferredLocalizedIntentsString(with: menuItem.shortcutLocalizationKey) as String
