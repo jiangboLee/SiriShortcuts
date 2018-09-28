@@ -17,6 +17,7 @@ public struct MenuItem: Codable, Hashable {
     public var isAvailable: Bool
     ///今天特殊菜肴
     public let isDailySpecial: Bool
+    
     public init(itemName: String, shortcutNameKey: String, price: Decimal, iconImageName: String, isAvailable: Bool, isDailySpecial: Bool) {
         self.itemName = itemName
         self.shortcutNameKey = shortcutNameKey

@@ -14,12 +14,13 @@
 		9B926149215C6D3E00559105 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B926147215C6D3E00559105 /* LaunchScreen.storyboard */; };
 		9B926155215C7C2B00559105 /* OrderDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B926154215C7C2B00559105 /* OrderDetail.storyboard */; };
 		9B926157215CDFA000559105 /* OrderDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B926156215CDF9F00559105 /* OrderDetailViewController.swift */; };
-		9B926159215CDFCA00559105 /* OrderDetailTableConfigurationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B926158215CDFCA00559105 /* OrderDetailTableConfigurationController.swift */; };
 		9B92615B215CDFE500559105 /* ConfigureMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B92615A215CDFE500559105 /* ConfigureMenuTableViewController.swift */; };
 		9B92615D215CE04100559105 /* SoupMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B92615C215CE04100559105 /* SoupMenuViewController.swift */; };
 		9B926161215CE3C100559105 /* MenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B926160215CE3C100559105 /* MenuItem.swift */; };
 		9B926163215DCD6000559105 /* SharedAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B926162215DCD6000559105 /* SharedAssets.xcassets */; };
 		9B926165215DCDFD00559105 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B926164215DCDFD00559105 /* UIImageView+Extension.swift */; };
+		9B926167215DD01300559105 /* OrderDetailConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B926166215DD01300559105 /* OrderDetailConfiguration.swift */; };
+		9B926169215DFB8C00559105 /* NumberFormatter+Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B926168215DFB8C00559105 /* NumberFormatter+Currency.swift */; };
 		9BECDFC7215D0C50001CEC5D /* SoupMenuManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BECDFC6215D0C50001CEC5D /* SoupMenuManager.swift */; };
 		9BECDFC9215D0CC0001CEC5D /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BECDFC8215D0CC0001CEC5D /* DataManager.swift */; };
 		9BECDFCC215D0DBB001CEC5D /* UserDefaults+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BECDFCB215D0DBB001CEC5D /* UserDefaults+DataSource.swift */; };
@@ -38,12 +39,13 @@
 		9B92614A215C6D3E00559105 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9B926154215C7C2B00559105 /* OrderDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OrderDetail.storyboard; sourceTree = "<group>"; };
 		9B926156215CDF9F00559105 /* OrderDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailViewController.swift; sourceTree = "<group>"; };
-		9B926158215CDFCA00559105 /* OrderDetailTableConfigurationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailTableConfigurationController.swift; sourceTree = "<group>"; };
 		9B92615A215CDFE500559105 /* ConfigureMenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigureMenuTableViewController.swift; sourceTree = "<group>"; };
 		9B92615C215CE04100559105 /* SoupMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoupMenuViewController.swift; sourceTree = "<group>"; };
 		9B926160215CE3C100559105 /* MenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItem.swift; sourceTree = "<group>"; };
 		9B926162215DCD6000559105 /* SharedAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = SharedAssets.xcassets; sourceTree = "<group>"; };
 		9B926164215DCDFD00559105 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
+		9B926166215DD01300559105 /* OrderDetailConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailConfiguration.swift; sourceTree = "<group>"; };
+		9B926168215DFB8C00559105 /* NumberFormatter+Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NumberFormatter+Currency.swift"; sourceTree = "<group>"; };
 		9BECDFC6215D0C50001CEC5D /* SoupMenuManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoupMenuManager.swift; sourceTree = "<group>"; };
 		9BECDFC8215D0CC0001CEC5D /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		9BECDFCB215D0DBB001CEC5D /* UserDefaults+DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+DataSource.swift"; sourceTree = "<group>"; };
@@ -109,7 +111,7 @@
 				9B92613E215C6D3C00559105 /* AppDelegate.swift */,
 				9B926140215C6D3C00559105 /* OrderHistoryTableViewController.swift */,
 				9B926156215CDF9F00559105 /* OrderDetailViewController.swift */,
-				9B926158215CDFCA00559105 /* OrderDetailTableConfigurationController.swift */,
+				9B926166215DD01300559105 /* OrderDetailConfiguration.swift */,
 				9B92615A215CDFE500559105 /* ConfigureMenuTableViewController.swift */,
 				9B92615C215CE04100559105 /* SoupMenuViewController.swift */,
 			);
@@ -144,6 +146,7 @@
 				9BECDFD0215D1B4C001CEC5D /* Localizable.swift */,
 				9B926162215DCD6000559105 /* SharedAssets.xcassets */,
 				9B926164215DCDFD00559105 /* UIImageView+Extension.swift */,
+				9B926168215DFB8C00559105 /* NumberFormatter+Currency.swift */,
 			);
 			path = Support;
 			sourceTree = "<group>";
@@ -234,9 +237,10 @@
 				9BECDFCC215D0DBB001CEC5D /* UserDefaults+DataSource.swift in Sources */,
 				9BECDFCF215D1A82001CEC5D /* Order.swift in Sources */,
 				9B92615D215CE04100559105 /* SoupMenuViewController.swift in Sources */,
+				9B926167215DD01300559105 /* OrderDetailConfiguration.swift in Sources */,
 				9B926141215C6D3C00559105 /* OrderHistoryTableViewController.swift in Sources */,
 				9B92613F215C6D3C00559105 /* AppDelegate.swift in Sources */,
-				9B926159215CDFCA00559105 /* OrderDetailTableConfigurationController.swift in Sources */,
+				9B926169215DFB8C00559105 /* NumberFormatter+Currency.swift in Sources */,
 				9BECDFC9215D0CC0001CEC5D /* DataManager.swift in Sources */,
 				9BECDFD1215D1B4C001CEC5D /* Localizable.swift in Sources */,
 				9BECDFC7215D0C50001CEC5D /* SoupMenuManager.swift in Sources */,

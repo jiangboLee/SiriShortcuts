@@ -30,6 +30,9 @@ class OrderHistoryTableViewController: UITableViewController {
     @IBAction func unwind(for unwindSegue: UIStoryboardSegue) {
         
     }
+    @IBAction func placeNewOrder(segue: UIStoryboardSegue) {
+        
+    }
 
     //MARK: - Nacigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

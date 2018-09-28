@@ -46,3 +46,10 @@ public struct Order: Codable {
         self.menuItemOptions = menuItemOptions
     }
 }
+
+
+extension Order: LocalizableCurrency {
+    var localizedCurrencyValue: String {
+        return NumberFormatter.currencyFormatter.string(from: total as NSDecimalNumber) ?? ""
+    }
+}

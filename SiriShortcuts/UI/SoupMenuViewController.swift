@@ -12,6 +12,10 @@ class SoupMenuViewController: UITableViewController {
 
     private static let cellReuseIdentifier = "SoupMenuItemDetailCell"
     
+    private enum SegueIdentifiers: String {
+        case newOrder = "soupMenuDetail"
+    }
+    
     private var menuItems: [MenuItem] = SoupMenuManager().availableItems
     
     override func viewDidLoad() {
@@ -20,7 +24,24 @@ class SoupMenuViewController: UITableViewController {
         
     }
 
-
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == SegueIdentifiers.newOrder.rawValue {
+            guard let destination = segue.destination as? OrderDetailViewController else {return}
+            
+            var order: Order?
+            if sender as? UITableViewCell? != nil,
+                let indexPath = tableView.indexPathForSelectedRow {
+                    order = Order(quantity: 1, menuItem: menuItems[indexPath.row], menuItemOptions: [])
+            } else {
+                //FIXME: --
+            }
+            
+            if let order = order {
+                let orderType = OrderDetailConfiguration(orderType: .new)
+                destination.configure(tableConfiguration: orderType, order: order)
+            }
+        }
+    }
 
 }
 // MARK: - Table view data source

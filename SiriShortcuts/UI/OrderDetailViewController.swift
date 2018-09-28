@@ -7,84 +7,124 @@
 //
 
 import UIKit
+import os
 
 class OrderDetailViewController: UITableViewController {
 
+    private(set) var order: Order!
+    
+    private var tableConfiguration: OrderDetailConfiguration = OrderDetailConfiguration(orderType: .new)
+    
+    private weak var quantityLabel: UILabel?
+    
+    private weak var totalLabel: UILabel?
+    
+    private var optionMap: [String: String] = [:]
+    
+    @IBOutlet var tableViewHeader: UIView!
+    @IBOutlet weak var headerImageView: UIImageView!
+    @IBOutlet weak var headerLabel: UILabel!
+    
+    @IBOutlet var tableViewFooter: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        if tableConfiguration.orderType == .historical {
+            navigationItem.rightBarButtonItem = nil
+        }
+        configureTableViewHeader()
+        configureTableViewFooter()
     }
 
-    // MARK: - Table view data source
-
+    private func configureTableViewHeader() {
+        headerImageView.image = UIImage(named: order.menuItem.iconImageName)
+        headerImageView.applyRoundedCorners()
+        headerLabel.text = order.menuItem.itemName
+        tableView.tableHeaderView = tableViewHeader
+    }
+    
+    private func configureTableViewFooter() {
+        
+    }
+    
+    func configure(tableConfiguration: OrderDetailConfiguration, order: Order) {
+        self.tableConfiguration = tableConfiguration
+        self.order = order
+    }
+    
+    
+    @IBAction func placeOrder(_ sender: UIBarButtonItem) {
+        
+        if order.quantity == 0 {
+            os_log("数量必须大于0")
+            return
+        }
+        performSegue(withIdentifier: "dismissPlaceOrder", sender: self)
+    }
+    
+    @objc private func stepperDidChange(_ sender: UIStepper) {
+        order.quantity = Int(sender.value)
+        quantityLabel?.text = "\(order.quantity)"
+        updateTotalLabel()
+    }
+    
+    private func updateTotalLabel() {
+        totalLabel?.text = order.localizedCurrencyValue
+    }
+}
+// MARK: - Table view data source
+extension OrderDetailViewController {
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return tableConfiguration.sections.count
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return tableConfiguration.sections[section].rowCount
     }
-
-    /*
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return tableConfiguration.sections[section].type.rawValue
+    }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        let sectionModel = tableConfiguration.sections[indexPath.section]
+        let reuseIdentifier = sectionModel.cellReuseIdentifier
+        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
+        configure(cell: cell, at: indexPath, with: sectionModel)
         return cell
     }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    
+    private func configure(cell: UITableViewCell, at indexPath: IndexPath, with sectionModel: OrderDetailConfiguration.SectionModel) {
+        switch sectionModel.type {
+        case .price:
+            cell.textLabel?.text = NumberFormatter.currencyFormatter.string(from: order.menuItem.price as NSDecimalNumber)
+        case .quantity:
+            if let cell = cell as? QuantityTableViewCell {
+                if tableConfiguration.orderType == .new {
+                    quantityLabel = cell.quantityLabel
+                    cell.stepper.addTarget(self, action: #selector(stepperDidChange(_:)), for: .valueChanged)
+                } else {
+                    cell.quantityLabel.text = "\(order.quantity)"
+                    cell.stepper.isHidden = true
+                }
+            }
+        case .options:
+            let option = Order.MenuItemOption.all[indexPath.row]
+            let localizedValue = option.rawValue
+            optionMap[localizedValue] = option.rawValue
+            
+            cell.textLabel?.text = localizedValue
+            cell.accessoryType = order.menuItemOptions.contains(option) ? .checkmark : .none
+        case .total:
+            totalLabel = cell.textLabel
+            updateTotalLabel()
+        }
     }
-    */
+}
 
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
 
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+class QuantityTableViewCell: UITableViewCell {
+    
+    @IBOutlet weak var quantityLabel: UILabel!
+    @IBOutlet weak var stepper: UIStepper!
 }

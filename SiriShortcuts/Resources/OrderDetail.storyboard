@@ -5,6 +5,7 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -34,7 +35,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="QuantityCell" id="9dp-r3-uMK">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="QuantityCell" id="9dp-r3-uMK" customClass="QuantityTableViewCell" customModule="SiriShortcuts" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="99.5" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9dp-r3-uMK" id="yCC-9O-qwR">
@@ -60,6 +61,10 @@
                                         <constraint firstItem="RXa-0R-fM1" firstAttribute="top" secondItem="yCC-9O-qwR" secondAttribute="topMargin" id="y2e-70-ByK"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="quantityLabel" destination="RXa-0R-fM1" id="hdV-Dg-VDQ"/>
+                                    <outlet property="stepper" destination="rGf-4q-Gxy" id="iMk-Vd-SPi"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -67,8 +72,56 @@
                             <outlet property="delegate" destination="biS-Kb-T7V" id="ZuF-Rl-95X"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="pUm-8F-zlF">
+                        <barButtonItem key="rightBarButtonItem" title="下单" id="2qP-8f-nmm">
+                            <connections>
+                                <action selector="placeOrder:" destination="biS-Kb-T7V" id="vYt-p7-EJU"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="headerImageView" destination="mqZ-uX-hiC" id="QjD-Ei-0FA"/>
+                        <outlet property="headerLabel" destination="nET-IN-86Z" id="NGQ-Wf-Qmk"/>
+                        <outlet property="tableViewFooter" destination="xVX-CS-C2f" id="ocL-4J-fKM"/>
+                        <outlet property="tableViewHeader" destination="hWI-Ah-atc" id="g2b-Wo-mLF"/>
+                        <segue destination="5dn-11-qCq" kind="unwind" identifier="dismissPlaceOrder" unwindAction="placeNewOrderWithSegue:" id="q47-QB-hK5"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ixa-EN-q2Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="hWI-Ah-atc">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="100"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mqZ-uX-hiC">
+                            <rect key="frame" x="20" y="20" width="60" height="60"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="60" id="Bjq-3V-3KS"/>
+                                <constraint firstAttribute="width" constant="60" id="gUz-yL-svb"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nET-IN-86Z">
+                            <rect key="frame" x="95" y="40" width="42" height="20.5"/>
+                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="mqZ-uX-hiC" firstAttribute="leading" secondItem="Gpz-xb-EcB" secondAttribute="leading" constant="20" id="Z4S-a0-HHL"/>
+                        <constraint firstItem="mqZ-uX-hiC" firstAttribute="centerY" secondItem="hWI-Ah-atc" secondAttribute="centerY" id="lPa-d8-eTY"/>
+                        <constraint firstItem="nET-IN-86Z" firstAttribute="centerY" secondItem="hWI-Ah-atc" secondAttribute="centerY" id="nZF-v9-yWg"/>
+                        <constraint firstItem="nET-IN-86Z" firstAttribute="leading" secondItem="mqZ-uX-hiC" secondAttribute="trailing" constant="15" id="yWi-GF-RhN"/>
+                    </constraints>
+                    <viewLayoutGuide key="safeArea" id="Gpz-xb-EcB"/>
+                </view>
+                <view contentMode="scaleToFill" id="xVX-CS-C2f">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <viewLayoutGuide key="safeArea" id="ho4-4u-Whu"/>
+                </view>
+                <exit id="5dn-11-qCq" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="20" y="-107"/>
         </scene>
