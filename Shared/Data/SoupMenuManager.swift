@@ -13,7 +13,7 @@ public typealias SoupMenu = Set<MenuItem>
 public class SoupMenuManager: DataManager<SoupMenu> {
     
     private static let defaultMenu: SoupMenu = [
-        MenuItem(itemName: "鸡肉面",
+        MenuItem(itemName: "鸡肉面(今日特色)",
                  shortcutNameKey: "CHICKEN_NOODLE_SOUP",
                  price: 4.55, iconImageName: "chicken_noodle_soup",
                  isAvailable: true,

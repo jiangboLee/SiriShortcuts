@@ -36,7 +36,10 @@ class OrderHistoryTableViewController: UITableViewController {
         if segue.identifier == SegueIdentifiers.orderDetail.rawValue {
             
         } else if segue.identifier == SegueIdentifiers.soupMenu.rawValue {
-            
+            if let navController = segue.destination as? UINavigationController,
+                let soupMenuVC = navController.viewControllers.first as? SoupMenuViewController {
+                
+            }
         } else if segue.identifier == SegueIdentifiers.configureMenu.rawValue {
             if let navController = segue.destination as? UINavigationController,
                let configureMenuTableVC = navController.viewControllers.first as? ConfigureMenuTableViewController {
