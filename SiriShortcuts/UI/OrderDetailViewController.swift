@@ -122,6 +122,25 @@ extension OrderDetailViewController {
     }
 }
 
+extension OrderDetailViewController {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if tableConfiguration.sections[indexPath.section].type == .options && tableConfiguration.orderType == .new {
+            guard let cell = tableView.cellForRow(at: indexPath),
+                let cellText = cell.textLabel?.text,
+                let optionRawValue = optionMap[cellText],
+                let option = Order.MenuItemOption(rawValue: optionRawValue) else {return}
+            
+            if order.menuItemOptions.contains(option) {
+                order.menuItemOptions.remove(option)
+                cell.accessoryType = .none
+            } else {
+                order.menuItemOptions.insert(option)
+                cell.accessoryType = .checkmark
+            }
+        }
+    }
+}
+
 
 class QuantityTableViewCell: UITableViewCell {
     

@@ -25,6 +25,23 @@ public class SoupOrderDataManager: DataManager<[Order]> {
 
 extension SoupOrderDataManager {
     
+    ///总下单历史
+    public var orderHistory: [Order] {
+        return dataAccessQueue.sync {
+            return managedData
+        }
+    }
+    
+    ///在数据管理器中存储订单。
+    ///此项目不在iOS和watchOS之间共享数据。手表上的订单不会显示在iOS订单历史记录中。
+    public func placeOrder(order: Order) {
+        dataAccessQueue.sync {
+            managedData.insert(order, at: 0)
+        }
+        writeData()
+        
+        //FIXME: --
+    }
 }
 
 private extension UserDefaults {
