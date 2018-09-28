@@ -74,6 +74,12 @@ extension ConfigureMenuTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let sectionModel = sectionData[indexPath.section]
+        let currentMenuItem = sectionModel.rowContent[indexPath.row]
+        var newMenuItem = currentMenuItem
+        newMenuItem.isAvailable = !newMenuItem.isAvailable
         
+        soupMenuManager.replaceMenuItem(currentMenuItem, with: newMenuItem)
+        reloadData()
     }
 }

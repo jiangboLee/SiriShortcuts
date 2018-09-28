@@ -81,6 +81,18 @@ extension SoupMenuManager {
             return managedData.filter { $0.isDailySpecial == false && $0.isAvailable == true }.sortedByName()
         }
     }
+    
+    public func replaceMenuItem(_ previousMenuItem: MenuItem, with menuItem: MenuItem) {
+        dataAccessQueue.sync {
+            managedData.remove(previousMenuItem)
+            managedData.insert(menuItem)
+        }
+        
+        ///对用户默认值的访问是在单独的访问队列后面进行的
+        writeData()
+        
+        //FIXME: --
+    }
 }
 
 
