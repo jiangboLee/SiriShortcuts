@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import Intents
+import os
 
 public class SoupOrderDataManager: DataManager<[Order]> {
     
@@ -19,6 +21,24 @@ public class SoupOrderDataManager: DataManager<[Order]> {
         dataAccessQueue.sync {
             ///首次使用该应用时，订单历史记录为空。
             managedData = []
+        }
+    }
+    ///将`Order`转换为`OrderSoupIntent`并将其作为与系统的交互捐赠
+    ///这样可以在将来此订单被建议或转换为语音快捷方式来快速下订单。
+    private func donateInteraction(for order: Order) {
+        let interaction = INInteraction(intent: order.intent, response: nil)
+        
+        ///订单标识符用于与捐赠匹配
+        //如果从菜单中删除汤，可以删除交互。
+        interaction.identifier = order.identifier.uuidString
+        interaction.donate { (error) in
+            if error != nil {
+                if let error = error as NSError? {
+                    os_log("Interaction donation failed: %@", log: OSLog.default, type: .error, error)
+                }
+            } else {
+                os_log("Successfully donated interaction")
+            }
         }
     }
 }
@@ -40,7 +60,8 @@ extension SoupOrderDataManager {
         }
         writeData()
         
-        //FIXME: --
+        //向系统捐赠互动
+        donateInteraction(for: order)
     }
 }
 

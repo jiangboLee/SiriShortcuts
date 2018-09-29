@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SoupKit
 
 class ConfigureMenuTableViewController: UITableViewController {
     

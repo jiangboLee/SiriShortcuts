@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SoupKit
 
 class OrderHistoryTableViewController: UITableViewController {
 
@@ -63,6 +64,7 @@ class OrderHistoryTableViewController: UITableViewController {
                 let selectedIndexPath = selectdIndexPaths.first {
                 order = soupOrderManager.orderHistory[selectedIndexPath.row]
             }
+            //FIXME:-- 
             
             if let destination = segue.destination as? OrderDetailViewController, let order = order {
                 destination.configure(tableConfiguration: OrderDetailConfiguration(orderType: .historical), order: order)
@@ -72,9 +74,9 @@ class OrderHistoryTableViewController: UITableViewController {
             if let navController = segue.destination as? UINavigationController,
                 let soupMenuVC = navController.viewControllers.first as? SoupMenuViewController {
                 if let activity = sender as? NSUserActivity, activity.activityType == NSStringFromClass(OrderSoupIntent.self) {
-                    
+                    soupMenuVC.userActivity = activity
                 } else {
-                    soupMenuVC
+                    soupMenuVC.userActivity = NSUserActivity.viewMenuActivity
                 }
             }
         } else if segue.identifier == SegueIdentifiers.configureMenu.rawValue {
@@ -83,6 +85,34 @@ class OrderHistoryTableViewController: UITableViewController {
                 configureMenuTableVC.soupMenuManager = soupMenuManager
                 configureMenuTableVC.soupOrderDataManager = soupOrderManager
             }
+        }
+    }
+    ///当通过恢复处理程序继续用户活动时，将调用此方法
+    override func restoreUserActivityState(_ activity: NSUserActivity) {
+        super.restoreUserActivityState(activity)
+        
+        if activity.activityType == NSUserActivity.viewMenuActivityType {
+            driveContinueActivitySegue(SegueIdentifiers.soupMenu.rawValue, sender: nil)
+        } else if activity.activityType == NSStringFromClass(OrderSoupIntent.self) {
+            //订单未完成，允许订单自定义
+            driveContinueActivitySegue(SegueIdentifiers.soupMenu.rawValue, sender: activity)
+        }
+    }
+    
+    ///通过弹出推送的订单历史记录确保此视图控制器可见，并在启动segue之前解除以模态方式呈现的任何内容。
+    private func driveContinueActivitySegue(_ segueID: String, sender: Any?) {
+        ///封装跳转
+        let encapsulatedSegue = {
+            self.performSegue(withIdentifier: segueID, sender: sender)
+        }
+        
+        navigationController?.popToRootViewController(animated: false)
+        if presentationController != nil {
+            dismiss(animated: false) {
+                encapsulatedSegue()
+            }
+        } else {
+            encapsulatedSegue()
         }
     }
 }

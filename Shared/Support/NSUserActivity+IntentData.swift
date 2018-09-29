@@ -16,7 +16,12 @@ import MobileCoreServices
 
 extension NSUserActivity {
     
+    public enum ActivityKeys: String {
+        case orderID
+    }
+    
     public static let viewMenuActivityType = "com.ljb.SiriShortcuts.viewMenu"
+    public static let orderCompleteActivityType = "com.ljb.SiriShortcuts.orderComplete"
     
     public static var viewMenuActivity: NSUserActivity {
         let userActivity = NSUserActivity(activityType: NSUserActivity.viewMenuActivityType)

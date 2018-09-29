@@ -31,5 +31,19 @@ extension Order {
         return orderSoupIntent
     }
     
+    public init?(from intent: OrderSoupIntent) {
+        let menuManager = SoupMenuManager()
+        guard let soupID = intent.soup?.identifier,
+        let menyItem = menuManager.findItem(identifier: soupID),
+        let quantity = intent.quantity else { return nil }
+        
+        let rawOptions = intent.options?.compactMap { (option) -> MenuItemOption? in
+            guard let optionID = option.identifier else { return nil }
+            return MenuItemOption(rawValue: optionID)
+        } ?? [MenuItemOption]()
+        
+        self.init(quantity: quantity.intValue, menuItem: menyItem, menuItemOptions: Set(rawOptions))
+    }
+    
     
 }

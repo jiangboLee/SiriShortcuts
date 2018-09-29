@@ -91,8 +91,16 @@ extension SoupMenuManager {
         ///对用户默认值的访问是在单独的访问队列后面进行的
         writeData()
         
-        //FIXME: --
+        removeDonation(for: menuItem)
+        updateShortcuts()
     }
+    
+    public func findItem(identifier: String) -> MenuItem? {
+        return dataAccessQueue.sync {
+            return managedData.first { $0.itemName == identifier }
+        }
+    }
+    
 }
 
 

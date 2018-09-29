@@ -47,9 +47,9 @@ public struct Order: Codable {
     }
 }
 
-
 extension Order: LocalizableCurrency {
-    var localizedCurrencyValue: String {
+    
+    public var localizedCurrencyValue: String {
         return NumberFormatter.currencyFormatter.string(from: total as NSDecimalNumber) ?? ""
     }
 }

@@ -9,6 +9,7 @@
 import UIKit
 import os
 import IntentsUI
+import SoupKit
 
 class OrderDetailViewController: UITableViewController {
 

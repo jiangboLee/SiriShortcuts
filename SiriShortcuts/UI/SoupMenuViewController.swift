@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SoupKit
 
 class SoupMenuViewController: UITableViewController {
 
@@ -20,6 +21,7 @@ class SoupMenuViewController: UITableViewController {
     
     override var userActivity: NSUserActivity? {
         didSet {
+            ///如果从OrderSoupIntent过来就跳到下单页
             if userActivity?.activityType == NSStringFromClass(OrderSoupIntent.self) {
                 performSegue(withIdentifier: SegueIdentifiers.newOrder.rawValue, sender: userActivity)
             }
@@ -42,8 +44,7 @@ class SoupMenuViewController: UITableViewController {
                     order = Order(quantity: 1, menuItem: menuItems[indexPath.row], menuItemOptions: [])
             } else if let activity = sender as? NSUserActivity,
                 let orderIntent = activity.interaction?.intent as? OrderSoupIntent {
-//                order = Order
-                //FIXME:---
+                order = Order(from: orderIntent)
             }
             
             if let order = order {
