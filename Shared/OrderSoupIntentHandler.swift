@@ -41,4 +41,22 @@ public class OrderSoupIntentHandler: NSObject, OrderSoupIntentHandling {
             completion(response)
         }
     }
+    
+    public func confirm(intent: OrderSoupIntent, completion: @escaping (OrderSoupIntentResponse) -> Void) {
+        ///确认阶段为您提供了对意图参数进行任何最终验证的机会,验证是否有任何所需的服务。您可能确认可以与公司的服务器通信
+        let soupMenuManager = SoupMenuManager()
+        guard let soup = intent.soup,
+            let identifier = soup.identifier,
+            let menuItem = soupMenuManager.findItem(identifier: identifier) else {
+                completion(OrderSoupIntentResponse(code: .failure, userActivity: nil))
+                return
+        }
+        
+        if menuItem.isAvailable == false {
+            completion(OrderSoupIntentResponse.failureOutOfStock(soup: soup))
+            return
+        }
+        //验证意图后，指示意图已准备好处理
+        completion(OrderSoupIntentResponse(code: .ready, userActivity: nil))
+    }
 }

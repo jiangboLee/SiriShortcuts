@@ -7,6 +7,7 @@
 //
 
 import IntentsUI
+import SoupKit
 
 // As an example, this extension's Info.plist has been configured to handle interactions for INSendMessageIntent.
 // You will want to replace this or add other intents as appropriate.
@@ -24,10 +25,21 @@ class IntentViewController: UIViewController, INUIHostedViewControlling {
         
     // MARK: - INUIHostedViewControlling
     
-    // Prepare your view controller for the interaction to handle.
+    // 准备视图控制器以进行交互处理
     func configureView(for parameters: Set<INParameter>, of interaction: INInteraction, interactiveBehavior: INUIInteractiveBehavior, context: INUIHostedViewContext, completion: @escaping (Bool, Set<INParameter>, CGSize) -> Void) {
-        // Do configuration here, including preparing views and calculating a desired size for presentation.
-        completion(true, parameters, self.desiredSize)
+        // 在此处进行配置，包括准备视图和计算所需的演示文稿大小
+        
+        guard let intent = interaction.intent as? OrderSoupIntent else {
+            completion(false, Set(), .zero)
+            return
+        }
+        //可以显示不同的UI，这取决于意图是在确认阶段还是处理阶段。此示例使用视图控制器包含来通过专用视图控制器管理每个不同的视图
+        if interaction.intentHandlingStatus == .ready {
+            
+        } else if interaction.intentHandlingStatus == .success {
+            
+        }
+        completion(false, parameters, .zero)
     }
     
     var desiredSize: CGSize {

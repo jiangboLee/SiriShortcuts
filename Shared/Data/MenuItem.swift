@@ -29,13 +29,13 @@ public struct MenuItem: Codable, Hashable {
 }
 
 extension MenuItem: LocalizableCurrency {
-    var localizedCurrencyValue: String {
+    public var localizedCurrencyValue: String {
         return NumberFormatter.currencyFormatter.string(from: price as NSDecimalNumber) ?? ""
     }
 }
 
 extension MenuItem: LocalizableShortcutString {
-    var shortcutLocalizationKey: String {
+    public var shortcutLocalizationKey: String {
         return shortcutNameKey
     }
 }

@@ -30,6 +30,10 @@
 		9B76D0AF215F862D00A29AC5 /* OrderSoupIntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B76D0AE215F862D00A29AC5 /* OrderSoupIntentHandler.swift */; };
 		9B76D0B0215F876D00A29AC5 /* SoupKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B76D07E215F60AE00A29AC5 /* SoupKit.framework */; };
 		9B76D0B1215F877500A29AC5 /* SoupKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B76D07E215F60AE00A29AC5 /* SoupKit.framework */; };
+		9B76D0B72160667E00A29AC5 /* InvoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B76D0B62160667E00A29AC5 /* InvoiceViewController.swift */; };
+		9B76D0B92160669200A29AC5 /* InvoiceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B76D0B82160669200A29AC5 /* InvoiceView.xib */; };
+		9B76D0BB21606E3A00A29AC5 /* OrderConfirmedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B76D0BA21606E3A00A29AC5 /* OrderConfirmedViewController.swift */; };
+		9B76D0BD21606E7700A29AC5 /* OrderConfirmedView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B76D0BC21606E7700A29AC5 /* OrderConfirmedView.xib */; };
 		9B92613F215C6D3C00559105 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B92613E215C6D3C00559105 /* AppDelegate.swift */; };
 		9B926141215C6D3C00559105 /* OrderHistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B926140215C6D3C00559105 /* OrderHistoryTableViewController.swift */; };
 		9B926144215C6D3C00559105 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B926142215C6D3C00559105 /* Main.storyboard */; };
@@ -107,6 +111,10 @@
 		9B76D081215F60AE00A29AC5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9B76D0AC215F78DF00A29AC5 /* SoupMenuManager+Intents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SoupMenuManager+Intents.swift"; sourceTree = "<group>"; };
 		9B76D0AE215F862D00A29AC5 /* OrderSoupIntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderSoupIntentHandler.swift; sourceTree = "<group>"; };
+		9B76D0B62160667E00A29AC5 /* InvoiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceViewController.swift; sourceTree = "<group>"; };
+		9B76D0B82160669200A29AC5 /* InvoiceView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InvoiceView.xib; sourceTree = "<group>"; };
+		9B76D0BA21606E3A00A29AC5 /* OrderConfirmedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderConfirmedViewController.swift; sourceTree = "<group>"; };
+		9B76D0BC21606E7700A29AC5 /* OrderConfirmedView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderConfirmedView.xib; sourceTree = "<group>"; };
 		9B92613B215C6D3C00559105 /* SiriShortcuts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SiriShortcuts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B92613E215C6D3C00559105 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9B926140215C6D3C00559105 /* OrderHistoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderHistoryTableViewController.swift; sourceTree = "<group>"; };
@@ -308,6 +316,10 @@
 				9B76D076215F59A800A29AC5 /* SiriShortcutsIntentsUI.entitlements */,
 				9BECDFE8215E63EC001CEC5D /* IntentViewController.swift */,
 				9BECDFEA215E63EC001CEC5D /* MainInterface.storyboard */,
+				9B76D0B62160667E00A29AC5 /* InvoiceViewController.swift */,
+				9B76D0B82160669200A29AC5 /* InvoiceView.xib */,
+				9B76D0BA21606E3A00A29AC5 /* OrderConfirmedViewController.swift */,
+				9B76D0BC21606E7700A29AC5 /* OrderConfirmedView.xib */,
 				9BECDFED215E63EC001CEC5D /* Info.plist */,
 			);
 			path = SiriShortcutsIntentsUI;
@@ -495,6 +507,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B76D0BD21606E7700A29AC5 /* OrderConfirmedView.xib in Resources */,
+				9B76D0B92160669200A29AC5 /* InvoiceView.xib in Resources */,
 				9BECDFEC215E63EC001CEC5D /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -552,6 +566,8 @@
 			files = (
 				9B76D078215F59BB00A29AC5 /* Intents.intentdefinition in Sources */,
 				9BECDFE9215E63EC001CEC5D /* IntentViewController.swift in Sources */,
+				9B76D0B72160667E00A29AC5 /* InvoiceViewController.swift in Sources */,
+				9B76D0BB21606E3A00A29AC5 /* OrderConfirmedViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
