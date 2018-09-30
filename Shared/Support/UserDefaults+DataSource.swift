@@ -12,7 +12,7 @@ extension UserDefaults {
     
     
     /// 注意：此项目不在iOS和watchOS之间共享数据。手表上的订单不会显示在iOS订单历史记录中。
-    private static let APPGroup = "group.com.ljb.SiriShortcuts"
+    private static let APPGroup = "group.com.lijiangbo.LEERandom"
     
     enum StorageKeys: String {
         case soupMenu

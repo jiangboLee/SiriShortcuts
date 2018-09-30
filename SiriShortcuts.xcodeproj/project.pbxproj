@@ -34,6 +34,7 @@
 		9B76D0B92160669200A29AC5 /* InvoiceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B76D0B82160669200A29AC5 /* InvoiceView.xib */; };
 		9B76D0BB21606E3A00A29AC5 /* OrderConfirmedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B76D0BA21606E3A00A29AC5 /* OrderConfirmedViewController.swift */; };
 		9B76D0BD21606E7700A29AC5 /* OrderConfirmedView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B76D0BC21606E7700A29AC5 /* OrderConfirmedView.xib */; };
+		9B76D0BF21607A0F00A29AC5 /* SharedAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B926162215DCD6000559105 /* SharedAssets.xcassets */; };
 		9B92613F215C6D3C00559105 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B92613E215C6D3C00559105 /* AppDelegate.swift */; };
 		9B926141215C6D3C00559105 /* OrderHistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B926140215C6D3C00559105 /* OrderHistoryTableViewController.swift */; };
 		9B926144215C6D3C00559105 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B926142215C6D3C00559105 /* Main.storyboard */; };
@@ -510,6 +511,7 @@
 				9B76D0BD21606E7700A29AC5 /* OrderConfirmedView.xib in Resources */,
 				9B76D0B92160669200A29AC5 /* InvoiceView.xib in Resources */,
 				9BECDFEC215E63EC001CEC5D /* MainInterface.storyboard in Resources */,
+				9B76D0BF21607A0F00A29AC5 /* SharedAssets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -52,6 +52,10 @@ extension SoupOrderDataManager {
         }
     }
     
+    public func order(matching identifier: UUID) -> Order? {
+        return orderHistory.first { $0.identifier == identifier }
+    }
+    
     ///在数据管理器中存储订单。
     ///此项目不在iOS和watchOS之间共享数据。手表上的订单不会显示在iOS订单历史记录中。
     public func placeOrder(order: Order) {

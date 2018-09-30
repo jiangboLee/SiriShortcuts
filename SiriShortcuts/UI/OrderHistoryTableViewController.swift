@@ -63,9 +63,12 @@ class OrderHistoryTableViewController: UITableViewController {
             let selectdIndexPaths = tableView.indexPathsForSelectedRows,
                 let selectedIndexPath = selectdIndexPaths.first {
                 order = soupOrderManager.orderHistory[selectedIndexPath.row]
+            } else if let activity = sender as? NSUserActivity,
+                let orderID = activity.userInfo?[NSUserActivity.ActivityKeys.orderID.rawValue] as? UUID {
+                
+                order = soupOrderManager.order(matching: orderID)
             }
-            //FIXME:-- 
-            
+           
             if let destination = segue.destination as? OrderDetailViewController, let order = order {
                 destination.configure(tableConfiguration: OrderDetailConfiguration(orderType: .historical), order: order)
             }
@@ -96,6 +99,9 @@ class OrderHistoryTableViewController: UITableViewController {
         } else if activity.activityType == NSStringFromClass(OrderSoupIntent.self) {
             //订单未完成，允许订单自定义
             driveContinueActivitySegue(SegueIdentifiers.soupMenu.rawValue, sender: activity)
+        } else if activity.activityType == NSUserActivity.orderCompleteActivityType, activity.userInfo?[NSUserActivity.ActivityKeys.orderID.rawValue] as? UUID != nil {
+            //订单完成
+            driveContinueActivitySegue(SegueIdentifiers.orderDetail.rawValue, sender: activity)
         }
     }
     
@@ -107,7 +113,7 @@ class OrderHistoryTableViewController: UITableViewController {
         }
         
         navigationController?.popToRootViewController(animated: false)
-        if presentationController != nil {
+        if presentedViewController != nil {
             dismiss(animated: false) {
                 encapsulatedSegue()
             }

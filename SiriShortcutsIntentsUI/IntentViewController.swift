@@ -35,15 +35,41 @@ class IntentViewController: UIViewController, INUIHostedViewControlling {
         }
         //可以显示不同的UI，这取决于意图是在确认阶段还是处理阶段。此示例使用视图控制器包含来通过专用视图控制器管理每个不同的视图
         if interaction.intentHandlingStatus == .ready {
-            
+            let invoiceVC = InvoiceViewController(for: intent)
+            attachChild(invoiceVC)
+            completion(true, parameters, desiredSize)
         } else if interaction.intentHandlingStatus == .success {
-            
+            if let response = interaction.intentResponse as? OrderSoupIntentResponse {
+                let confirmedVC = OrderConfirmedViewController(for: intent, with: response)
+                attachChild(confirmedVC)
+                completion(true, parameters, desiredSize)
+            }
         }
         completion(false, parameters, .zero)
     }
     
+    /// UI尺寸
     var desiredSize: CGSize {
-        return self.extensionContext!.hostedViewMaximumAllowedSize
+        let width = self.extensionContext!.hostedViewMaximumAllowedSize.width
+        
+        return CGSize(width: width, height: 170)
     }
     
+    private func attachChild(_ viewController: UIViewController) {
+        addChild(viewController)
+        
+        if let subview = viewController.view {
+            view.addSubview(subview)
+            subview.translatesAutoresizingMaskIntoConstraints = false
+            
+            // Set the child controller's view to be the exact same size as the parent controller's view.
+            subview.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+            subview.heightAnchor.constraint(equalTo: view.heightAnchor).isActive = true
+            
+            subview.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+            subview.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        }
+        
+        viewController.didMove(toParent: self)
+    }
 }

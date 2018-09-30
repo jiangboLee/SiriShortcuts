@@ -25,6 +25,7 @@ public class OrderSoupIntentHandler: NSObject, OrderSoupIntentHandling {
         
         let userActivity = NSUserActivity(activityType: NSUserActivity.orderCompleteActivityType)
         userActivity.addUserInfoEntries(from: [NSUserActivity.ActivityKeys.orderID.rawValue: order.identifier])
+        print(order.identifier)
         
         let formatter = DateComponentsFormatter()
         formatter.unitsStyle = .full
