@@ -9,6 +9,8 @@
 import UIKit
 
 public class OrderSoupIntentHandler: NSObject, OrderSoupIntentHandling {
+    
+    ///确认下单回调方法
     public func handle(intent: OrderSoupIntent, completion: @escaping (OrderSoupIntentResponse) -> Void) {
         
         guard let soup = intent.soup,
@@ -16,7 +18,7 @@ public class OrderSoupIntentHandler: NSObject, OrderSoupIntentHandling {
                 completion(OrderSoupIntentResponse(code: .failure, userActivity: nil))
                 return
         }
-        
+        //下单
         let ordermanager = SoupOrderDataManager()
         ordermanager.placeOrder(order: order)
         
