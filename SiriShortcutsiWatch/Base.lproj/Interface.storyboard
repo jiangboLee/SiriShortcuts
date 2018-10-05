@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="14313.18" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+    <device id="watch38" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="14238.10"/>
+    </dependencies>
+    <scenes>
+        <!--Interface Controller-->
+        <scene sceneID="aou-V4-d1y">
+            <objects>
+                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="SiriShortcutsiWatch" customModuleProvider="target">
+                    <items>
+                        <label alignment="center" text="订餐" id="zLm-hB-8Uz">
+                            <fontDescription key="font" style="UICTFontTextStyleTitle2"/>
+                        </label>
+                        <button width="1" alignment="left" title="下单" id="GBT-xh-bKg">
+                            <connections>
+                                <segue destination="biR-x2-fTF" kind="push" id="76r-be-BbN"/>
+                            </connections>
+                        </button>
+                        <button width="1" alignment="left" title="下单历史" id="puf-c1-PHp">
+                            <connections>
+                                <segue destination="P7p-jM-ULf" kind="push" id="Gie-tT-Y4K"/>
+                            </connections>
+                        </button>
+                    </items>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="220" y="345"/>
+        </scene>
+        <!--menu-->
+        <scene sceneID="ISx-hi-LXd">
+            <objects>
+                <controller identifier="menu" id="biR-x2-fTF" customClass="MenuInterfaceController" customModule="SiriShortcutsiWatch_Extension">
+                    <items>
+                        <table alignment="left" id="7nL-4N-lOH">
+                            <items>
+                                <tableRow identifier="menu" id="sdf-QQ-dJe" customClass="MenuItemRowController" customModule="SiriShortcutsiWatch_Extension">
+                                    <group key="rootItem" width="1" height="47" alignment="left" spacing="8" id="aFJ-Jz-bFE">
+                                        <items>
+                                            <imageView width="40" height="40" alignment="left" verticalAlignment="center" id="jrn-Jy-xaF"/>
+                                            <label alignment="left" verticalAlignment="center" text="Soup Name" numberOfLines="0" id="gEo-BV-Rdp"/>
+                                        </items>
+                                        <connections>
+                                            <segue destination="O2b-h4-ivs" kind="modal" identifier="confirmOrderSegue" id="CI1-2H-KhP"/>
+                                        </connections>
+                                    </group>
+                                    <connections>
+                                        <outlet property="soupImage" destination="jrn-Jy-xaF" id="Rhq-no-K5j"/>
+                                        <outlet property="soupName" destination="gEo-BV-Rdp" id="6yG-dj-6g2"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
+                    </items>
+                    <connections>
+                        <outlet property="interfaceTable" destination="7nL-4N-lOH" id="J55-UK-r9c"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="552" y="337"/>
+        </scene>
+        <!--Order Confirmed Interface Controller-->
+        <scene sceneID="NhP-iH-mlr">
+            <objects>
+                <controller id="O2b-h4-ivs" customClass="OrderConfirmedInterfaceController" customModule="SiriShortcutsiWatch_Extension">
+                    <items>
+                        <group width="1" alignment="left" verticalAlignment="center" layout="vertical" id="wST-1D-dlf">
+                            <items>
+                                <label alignment="center" verticalAlignment="center" text="Order Confirmed" textAlignment="center" numberOfLines="0" id="Vat-Si-mxz">
+                                    <fontDescription key="font" style="UICTFontTextStyleTitle2"/>
+                                </label>
+                                <imageView width="60" height="60" alignment="center" verticalAlignment="center" id="Y1T-QA-tPv"/>
+                            </items>
+                        </group>
+                    </items>
+                    <connections>
+                        <outlet property="image" destination="Y1T-QA-tPv" id="zYw-T1-3Wl"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="872" y="330"/>
+        </scene>
+        <!--history-->
+        <scene sceneID="iEe-IS-FwK">
+            <objects>
+                <controller identifier="history" id="P7p-jM-ULf" customClass="HistoryInterfaceController" customModule="SiriShortcutsiWatch_Extension">
+                    <items>
+                        <table alignment="left" id="JHb-2e-fHg">
+                            <items>
+                                <tableRow identifier="history" id="J4h-BR-5vf" customClass="HistoryItemRowController" customModule="SiriShortcutsiWatch_Extension">
+                                    <group key="rootItem" width="1" height="53" alignment="left" layout="vertical" id="gbY-mY-9iN">
+                                        <items>
+                                            <label alignment="left" verticalAlignment="center" text="item Ordered" id="HMz-jq-Ezc">
+                                                <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
+                                            </label>
+                                            <label alignment="left" verticalAlignment="center" text="Time" id="tDg-go-f3U">
+                                                <fontDescription key="font" style="UICTFontTextStyleFootnote"/>
+                                            </label>
+                                        </items>
+                                    </group>
+                                    <connections>
+                                        <outlet property="itemOrderedLabel" destination="HMz-jq-Ezc" id="WqK-Ai-scv"/>
+                                        <outlet property="orderedTimeLabel" destination="tDg-go-f3U" id="ao4-QY-kKW"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
+                    </items>
+                    <connections>
+                        <outlet property="interfaceTable" destination="JHb-2e-fHg" id="B6j-D9-WJG"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="220" y="751"/>
+        </scene>
+    </scenes>
+</document>

@@ -82,6 +82,7 @@ public class DataManager<ManagedDataType: Codable> {
     
     /// 从“UserDefaults”加载数据。
     private func loadData() {
+        
         userDefaultsAccessQueue.sync {
             guard let archivedData = userDefaults.data(forKey: storageDescriptor.key) else { return }
             
@@ -97,7 +98,7 @@ public class DataManager<ManagedDataType: Codable> {
     ///将数据写入`UserDefaults`
     func writeData() {
         userDefaultsAccessQueue.async {
-            
+            self.userDefaults.setValue("你好啊aaa", forKey: "hehe")
             do {
                 let encoder = PropertyListEncoder()
                 let encoderData = try encoder.encode(self.managedData)

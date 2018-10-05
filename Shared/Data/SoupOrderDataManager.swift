@@ -47,6 +47,7 @@ extension SoupOrderDataManager {
     
     ///总下单历史
     public var orderHistory: [Order] {
+        print(userDefaults.value(forKey: "hehe")) 
         return dataAccessQueue.sync {
             return managedData
         }
